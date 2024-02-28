@@ -19,18 +19,32 @@
         corner-radius: 10px
         transform: skewX(-10deg)
         margin-top: 2vh
-        transition: all 0.5s
+        transition: all 0.7s
         background-image: url("../../../assets/discover-1.png")
         background-position: center
         background-size: 200%
         background-repeat: no-repeat
         background-transform: skewX(10deg)
+        .filter
+            display: none
+            background-color: rgba(0, 0, 0, 0.6)
+            height: 100%
+            width: 100%
+            backdrop-filter: blur(2px)
+        .text
+            display: flex
+            justify-content: center
+            align-items: center
+            padding: 10px
         p
             display: none
             transform: skewX(10deg)
+            font-size: 12px
         &:hover
             transform: skewX(-10deg) scale(1.12)
             background-color: #2980b9
             cursor: pointer
+            .filter
+                display: flex
             p
                 display: flex
