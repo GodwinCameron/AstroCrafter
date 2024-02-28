@@ -1,0 +1,36 @@
+.main
+    width: 20vw
+    height: 45vh
+    .title
+        font-size: 20px
+        font-weight: 280
+        margin-top: 5vh
+        text-decoration: underline
+        font-weight:400
+        letter-spacing:0.5px
+        text-decoration: underline
+        text-decoration-thickness: 4px
+        margin-left: 1.1vw
+    .content
+        width: 80%
+        height: 80%
+        background-color: #00ADEB
+        border: 4px solid white
+        corner-radius: 10px
+        transform: skewX(-10deg)
+        margin-top: 2vh
+        transition: all 0.5s
+        background-image: url("../../../assets/discover-1.png")
+        background-position: center
+        background-size: 200%
+        background-repeat: no-repeat
+        background-transform: skewX(10deg)
+        p
+            display: none
+            transform: skewX(10deg)
+        &:hover
+            transform: skewX(-10deg) scale(1.12)
+            background-color: #2980b9
+            cursor: pointer
+            p
+                display: flex
