@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DiscoverBlockComponent } from '../../compoents/discover-block/discover-block.component';
+import { DiscoverBlockComponent } from '../../components/discover-block/discover-block.component';
 
 @Component({
   selector: 'app-home',
