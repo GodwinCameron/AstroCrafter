@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
 export class MainPanelComponent implements AfterViewInit {
   @ViewChild('contentElement', { static: false }) contentElement!: ElementRef;
   @ViewChild('itemCardElement', { static: false }) itemCardElement!: ElementRef;
-  navItemsClicked: boolean[] = [false, false]; // Keep track of clicked state for each nav item
+  navItemsClicked: boolean[] = [true, false, false, false]; // Keep track of clicked state for each nav item
 
   ngAfterViewInit() {
     if (this.contentElement) {
