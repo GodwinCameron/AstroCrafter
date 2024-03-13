@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+// import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-discover-block',
@@ -8,5 +9,12 @@ import { Component } from '@angular/core';
   styleUrl: './discover-block.component.sass'
 })
 export class DiscoverBlockComponent {
+
+
+  // constructor(private router: Router) { }
+
+  // navigateToPlanet() {
+  //   this.router.navigate(['/planet']);
+  // }
 
 }

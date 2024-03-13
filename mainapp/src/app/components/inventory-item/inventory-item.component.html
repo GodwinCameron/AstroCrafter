@@ -1,35 +1,9 @@
 <div class="main">
-  <h1>INVENTORY........................................................................................................................................</h1>
-  <div class="item">
-    <div class="info">CARBON...x52............</div>
-    <div class="button-section">
-      <div class="button transfer">TRANSFER</div>
-      <div class="button sell">SELL</div>
-      <div class="button discard">DISCARD</div>
+    <h1>
+      INVENTORY........................................................................................................................................
+    </h1>
+    <div class="container">
+      <app-item-card *ngFor="let item of data; let i = index" [data]="data" [key]="i"></app-item-card>
     </div>
   </div>
-  <div class="item">
-    <div class="info">CARBON...x52............</div>
-    <div class="button-section">
-      <div class="button transfer">TRANSFER</div>
-      <div class="button sell">SELL</div>
-      <div class="button discard">DISCARD</div>
-    </div>
-  </div>
-  <div class="item">
-    <div class="info">CARBON...x52............</div>
-    <div class="button-section">
-      <div class="button transfer">TRANSFER</div>
-      <div class="button sell">SELL</div>
-      <div class="button discard">DISCARD</div>
-    </div>
-  </div>
-  <div class="item">
-    <div class="info">CARBON...x52............</div>
-    <div class="button-section">
-      <div class="button transfer">TRANSFER</div>
-      <div class="button sell">SELL</div>
-      <div class="button discard">DISCARD</div>
-    </div>
-  </div>
-</div>
+  
