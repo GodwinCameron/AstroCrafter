@@ -33,6 +33,9 @@
             border-top-width: 12px
             margin-top: 1vh
             overflow: hidden
+            display: flex
+            flex-direction: column
+            transition: all 0.5s
         .craft
             display: flex
             align-items: center
@@ -40,19 +43,41 @@
             margin-top: 0
             color: #5F5F5F
             height: 3vh
+            transition: all 0.5s
             .button
                 margin-top: 6.5vh
                 padding: 0.2vw
                 border: 3px solid #5F5F5F
                 border-radius: 7px
                 border-top-width: 12px
+                transition: all 0.5s
             p
                 color: #5F5F5F
-            
+            &:hover
+                color: #00ADEB
+                cursor: pointer
+                p
+                    color: #ffffff
+                .button
+                    transition: 0s
+                    border-color: #00ADEB
+
         .schematics
             .block
                 min-height: 40vh
+                text-wrap: nowrap
+                overflow-x: hidden
+                overflow-y: scroll
+                padding-left: 10px
+                p
+                    &:hover
+                        color: #00ADEB
+                        cursor: pointer
+                    &:active
+                        color: white
+
         .ingredients
+            margin-left: 1vw
             .block
                 height: 10px
         .yeild

@@ -2,15 +2,20 @@ import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { InventoryItemComponent } from '../inventory-item/inventory-item.component';
 import { InventoryCraftingComponent } from '../inventory-crafting/inventory-crafting.component';
 import { CommonModule } from '@angular/common';
+import { PlanetSelectorComponent } from '../planet-selector/planet-selector.component';
+import { RefineryComponent } from '../refinery/refinery.component';
 
 @Component({
   selector: 'app-main-panel',
   standalone: true,
-  imports: [InventoryItemComponent, InventoryCraftingComponent, CommonModule],
+  imports: [InventoryItemComponent, InventoryCraftingComponent, CommonModule, PlanetSelectorComponent, RefineryComponent],
   templateUrl: './main-panel.component.html',
   styleUrl: './main-panel.component.sass',
 })
 export class MainPanelComponent implements AfterViewInit {
+
+  // Provided by ChatGPT: =================================================================================================
+  // ======================================================================================================================
   @ViewChild('contentElement', { static: false }) contentElement!: ElementRef;
   @ViewChild('itemCardElement', { static: false }) itemCardElement!: ElementRef;
   navItemsClicked: boolean[] = [true, false, false, false]; // Keep track of clicked state for each nav item
@@ -36,4 +41,6 @@ export class MainPanelComponent implements AfterViewInit {
     // Toggle the clicked state for the current nav item
     this.navItemsClicked[index] = true;
   }
+  // ======================================================================================================================
+
 }

@@ -36,10 +36,16 @@
   <div class="content" #contentElement>
     <div class="item-card" #itemCardElement>
       <div *ngIf="navItemsClicked[0]">
-        <app-inventory-item></app-inventory-item>
+        <app-inventory-item/>
       </div>
       <div *ngIf="navItemsClicked[1]">
-        <app-inventory-crafting></app-inventory-crafting>
+        <app-inventory-crafting/>
+      </div>
+      <div *ngIf="navItemsClicked[2]">
+        <app-refinery/>
+      </div>
+      <div *ngIf="navItemsClicked[3]">
+        <app-planet-selector/>
       </div>
     </div>
   </div>
