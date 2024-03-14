@@ -286,7 +286,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 - [Figma](https://www.figma.com/)
 - [ChatGPT](https://chat.openai.com/)
 - [Cursor](https://cursor.sh/)
-- [Lecturer] (armand@openwindow.co.za)
+- [Lecturer](mailto:armand@openwindow.co.za)
 
 <!-- all resources that you used and Acknowledgements here -->
 
