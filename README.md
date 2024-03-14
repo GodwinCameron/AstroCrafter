@@ -272,10 +272,21 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## Contact
 * **Cameron Godwin** - [email@address](mailto:200109@virtualwindow.co.za)
 
-* **Tsebo Ramonyalioa** - [email@address](mailto:tsebo.ramonyalioa.an@gmail.com) - [@instagram_handle](https://www.instagram.com/inspiration__200/) 
+* **Tsebo Ramonyalioa** - [email@address](mailto:200200@virtualwindow.co.za) - [@instagram_handle](https://www.instagram.com/inspiration__200/) 
 * **Project Link** - https://github.com/GodwinCameron/AstroCrafter
 
 <!-- ACKNOWLEDGEMENTS -->
+
+## Acknowledgements
+
+<!-- all resources that you used and Acknowledgements here -->
+<!-- TODO Change this -->
+
+- [Stack Overflow](https://stackoverflow.com/)
+- [Figma](https://www.figma.com/)
+- [ChatGPT](https://chat.openai.com/)
+- [Cursor](https://cursor.sh/)
+- [Lecturer] (armand@openwindow.co.za)
 
 <!-- all resources that you used and Acknowledgements here -->
 
