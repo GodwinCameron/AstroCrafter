@@ -20,7 +20,7 @@
 <p align="center">
 
   <a href="https://github.com/GodwinCameron/AstroCrafter">
-    <img src="/mainapp/ReadMeAssets/logo.png" align="center" alt="src/Assets/Logo2.svg" width="140" height="140">
+    <img src="/mainapp/ReadMeAssets/logo.png" align="center" alt="src/Assets/Logo2.svg" width="200" height="140">
   </a>
   
   <h3 align="center">AstroCrafter</h3>
