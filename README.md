@@ -284,9 +284,10 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 - [Stack Overflow](https://stackoverflow.com/)
 - [Figma](https://www.figma.com/)
+- [Lecturer](mailto:armand@openwindow.co.za)
 - [ChatGPT](https://chat.openai.com/)
 - [Cursor](https://cursor.sh/)
-- [Lecturer](mailto:armand@openwindow.co.za)
+
 
 <!-- all resources that you used and Acknowledgements here -->
 
