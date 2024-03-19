@@ -5,12 +5,14 @@
 /tmp
 /out-tsc
 /bazel-out
-
+# .gitignore
 # Node
 /node_modules
 npm-debug.log
 yarn-error.log
 
+server/node_modules
+server/dataSource
 
 # IDEs and editors
 .idea/
