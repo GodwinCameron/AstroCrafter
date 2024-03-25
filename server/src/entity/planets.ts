@@ -1,7 +1,8 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, ManyToMany} from "typeorm";
+import { Resources } from "./resources";
 
 @Entity()
-export class Planet {
+export class Planets {
     @PrimaryGeneratedColumn()
     id!: number;
 
@@ -12,7 +13,7 @@ export class Planet {
     difficulty!: string;
 
     @Column()
-    resources!: string;
+    collectable_resources_name!: string;
 
     @Column()
     description!: string;
@@ -24,7 +25,7 @@ export class Planet {
     color!: string;
 
     @Column()
-    full_cost_travel!: string;
+    fuel_cost_travel!: string;
 
     @Column()
     inventory!: string;
@@ -34,4 +35,12 @@ export class Planet {
 
     @Column()
     symbol!: string;
+
+//relationships
+// Many-to-Many relationship to resources
+@ManyToMany(() => Resources, (resources) => resources.planets)
+public resources?: Resources[];
+
 }
+
+
