@@ -1,7 +1,15 @@
 <body>
-  <app-top-nav></app-top-nav>
-  <div class="main">
-    <app-main-panel></app-main-panel>
-    <div class="planet-orb rotating"></div>
+  <div class="filter">
+    <app-top-nav
+      [currentPlanet]="getCurrentPlanet()"
+      [color]="color"
+    ></app-top-nav>
+    <div class="main">
+      <app-main-panel></app-main-panel>
+      <div class="planet-orb rotating" (click)="changePlanet('Vesania')">
+        <div class="hover-effect"></div>
+      </div>
+    </div>
+    <app-planet-selector-large></app-planet-selector-large>
   </div>
 </body>

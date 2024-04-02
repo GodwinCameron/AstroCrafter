@@ -1,8 +1,8 @@
 <div class="item">
   <div class="info">
-    <div class="icon"><img src="../../../assets/icons/{{ data[key].icon }}" /></div>
+    <div class="icon"><img src="../../../assets/icons/{{ data[key].name.toLowerCase() }}.png" alt="{{ data[key].icon}}" /></div>
     <div class="item-image">
-      <img src="../../../assets/resources/{{ data[key].image}}" />
+      <img src="../../../assets/resources/{{ data[key].name.toLowerCase() }}.png" alt="{{ data[key].image}}"/>
     </div>
     ...x{{ data[key].quantity }}......
     <p>{{ data[key].name }}</p>

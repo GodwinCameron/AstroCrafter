@@ -4,24 +4,22 @@ import { Planets } from "./planets";
 @Entity()
 export class Resources {
     @PrimaryGeneratedColumn()
-    id!: number;
+    public id!: number;
 
     @Column()
-    name!: string;
+    public name!: string;
 
     @Column()
-    category!: string;
+    public category!: string;
 
     @Column()
-    quantity!: number;
+    public sell_cost!: number;
 
     @Column()
-    image!: string;
+    public collect_cost!: number;
 
-    @Column()
-    symbol!: string;
 
-    // Relationship with Plants
+    // Relationship with Planets
     // ManyToMany To Planets
 @ManyToMany(() => Planets, (planets) => planets.resources)
 public planets?: Planets;

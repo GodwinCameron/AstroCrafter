@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 // import { Router } from '@angular/router';
 
 @Component({
@@ -9,6 +9,10 @@ import { Component } from '@angular/core';
   styleUrl: './discover-block.component.sass'
 })
 export class DiscoverBlockComponent {
+
+  @Input() title: string = '';
+  @Input() subtitle: string = '';
+  @Input() image: string = '';
 
 
   // constructor(private router: Router) { }

@@ -2,9 +2,9 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
-    "dev": "npx ts-node src/index",
+    "dev": "npx nodemon src/index",
     "build": "npx tsc --project ./"
   },
   "keywords": [],

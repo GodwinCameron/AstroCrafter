@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv  from 'dotenv';
 import AppDataSource from "./dataSource";
+import resourceRouter from "./routes/resourcesRoute";
 
 const cors = require('cors');
 const app = express();
@@ -15,6 +16,9 @@ app.get("/planets", (req, res) => {
     const planets = appDataSource.getRepository("planets").find();
     res.send(planets);
 });
+
+app.use('/resources', resourceRouter);
+
 
 app.listen(process.env.PORT, () => {
     console.log(`[/server]: Server is running at http://localhost:${process.env.PORT}`);
