@@ -2,6 +2,7 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Sylva } from "./sylva";
 import { Desolo } from "./desolo";
 import { Calidor } from "./calidor";
+import { Vesania } from "./vesania";
 
 @Entity()
 export class Resources {
@@ -26,4 +27,6 @@ export class Resources {
   desolo!: Desolo[];
   @OneToMany(() => Calidor, calidor => calidor.resource)
   calidor!: Calidor[];
+  @OneToMany(() => Vesania, vesania => vesania.resource)
+  vesania!: Vesania[];
 }

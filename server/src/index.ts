@@ -6,6 +6,8 @@ import planetRouter from "./routes/planetsRoute";
 import sylvaRouter from "./routes/sylvaRoute";
 import desoloRouter from "./routes/desoloRoute";
 import calidorRouter from "./routes/calidorRoute";
+import vesaniaRouter from "./routes/vesaniaRoute";
+import novusRouter from "./routes/novusRoute";
 
 const cors = require('cors');
 const app = express();
@@ -23,9 +25,11 @@ const appDataSource = AppDataSource
 
 app.use('/resources', resourceRouter);
 app.use('/sylva', sylvaRouter);
+app.use('/vesania', vesaniaRouter);
 app.use('/calidor', calidorRouter);
 app.use('/desolo', desoloRouter);
 app.use('/planets', planetRouter);
+app.use('/novus', novusRouter);
 
 
 app.listen(process.env.PORT, () => {
