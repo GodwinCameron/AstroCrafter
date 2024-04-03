@@ -12,7 +12,7 @@ import { ResourceService } from '../../services/resource.service';
 })
 export class InventoryItemComponent {
   data = [
-    { name: "CARBON", quantity: 90, icon: "carbon.png", image: "carbon.png" },
+    { name: "CARBON", quantity: 404, icon: "carbon.png", image: "carbon.png" },
     // { name: "GLASS", quantity: 65, icon: "glass.png", image: "glass.png"},
     // { name: "CERAMIC", quantity: 12, icon: "ceramic.png", image: "ceramic.png" },
     // { name: "ALUMINUM", quantity: 55, icon: "aluminum.png", image: "aluminum.png" },
@@ -43,7 +43,7 @@ export class InventoryItemComponent {
 
   ngOnInit() {
     console.log("Inventory Item Component Initialized");
-    this.service.getAllResources().subscribe((data) => {
+    this.service.getAllResources("sylva").subscribe((data) => {
       console.log(data);
       this.data = data;
     });

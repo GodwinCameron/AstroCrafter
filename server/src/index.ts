@@ -3,6 +3,7 @@ import dotenv  from 'dotenv';
 import AppDataSource from "./dataSource";
 import resourceRouter from "./routes/resourcesRoute";
 import planetRouter from "./routes/planetsRoute";
+import sylvaRouter from "./routes/sylvaRoute";
 
 const cors = require('cors');
 const app = express();
@@ -19,7 +20,8 @@ const appDataSource = AppDataSource
 // });
 
 app.use('/resources', resourceRouter);
-app.use('/planets', planetRouter)
+app.use('/sylva', sylvaRouter);
+app.use('/planets', planetRouter);
 
 
 app.listen(process.env.PORT, () => {
