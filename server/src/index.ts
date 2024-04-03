@@ -2,6 +2,7 @@ import express from "express";
 import dotenv  from 'dotenv';
 import AppDataSource from "./dataSource";
 import resourceRouter from "./routes/resourcesRoute";
+import planetRouter from "./routes/planetsRoute";
 
 const cors = require('cors');
 const app = express();
@@ -12,12 +13,13 @@ dotenv.config()
 
 const appDataSource = AppDataSource
 
-app.get("/planets", (req, res) => {
-    const planets = appDataSource.getRepository("planets").find();
-    res.send(planets);
-});
+// app.get("/planets", (req, res) => {
+//     const planets = appDataSource.getRepository("planets").find();
+//     res.send(planets);
+// });
 
 app.use('/resources', resourceRouter);
+app.use('/planets', planetRouter)
 
 
 app.listen(process.env.PORT, () => {
