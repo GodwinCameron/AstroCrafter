@@ -1,5 +1,6 @@
 import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Planets } from "./planets";
+import { Sylva } from "./sylva";
 
 @Entity()
 export class Resources {
@@ -21,11 +22,10 @@ export class Resources {
 
     // Relationship with Planets
     // ManyToMany To Planets
-@ManyToMany(() => Planets, (planets) => planets.resources)
-public planets?: Planets;
-
-
+@ManyToMany(() => Resources, (resources) => resources.sylva)
+public sylva?: Sylva;
 }
+
 
 
 
