@@ -17,6 +17,7 @@ export class PlanetComponent implements AfterViewInit {
 
   color: string = '#00ADEB';
   // color: string = '#eb00d8';
+  currentPlanet: any = { name: 'Sylva' };
 
   constructor(
     private planetService: PlanetService,
@@ -33,14 +34,15 @@ export class PlanetComponent implements AfterViewInit {
   getCurrentPlanet(): string {
     return this.planetService.getPlanet();
   }
-  changePlanet(newPlanet: string) {
-    this.planetService.setPlanet(newPlanet);
-    this.color = '#eb00d8';
-
+  changePlanet() {
     const planetSelectorLarge = document.querySelector('app-planet-selector-large');
     if (planetSelectorLarge) {
       this.renderer.setStyle(planetSelectorLarge, 'marginTop', '-100vh');
     }
+  }
+  handleCurrentPlanetChange(newCurrentPlanet: any) {
+    this.currentPlanet = newCurrentPlanet;
+    // Perform any additional actions here
   }
 
 }

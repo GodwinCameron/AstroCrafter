@@ -1,8 +1,8 @@
 <div class="main">
-    <div class="location" [style.background-color]="color">
-        <p>{{ currentPlanet.toUpperCase() }} </p>
+    <div class="location" [style.background-color]="currentPlanet.color">
+        <p>{{ currentPlanet.name.toUpperCase() }} </p>
     </div>
-    <div class="content" [style.background-color]="color">
+    <div class="content" [style.background-color]="currentPlanet.color">
         <div class="section">
             <a href="home"><p>HOME-></p></a>
             <div class="block"></div>

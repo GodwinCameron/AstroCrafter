@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ItemCardComponent } from '../item-card/item-card.component';
 import { CommonModule } from '@angular/common';
 import { ResourceService } from '../../services/resource.service';
@@ -11,8 +11,12 @@ import { ResourceService } from '../../services/resource.service';
   styleUrl: './inventory-item.component.sass'
 })
 export class InventoryItemComponent {
-  data = [
-    { name: "CARBON", quantity: 404, icon: "carbon.png", image: "carbon.png" },
+
+  data: any;
+  @Input() currentPlanet: any;
+
+  // data = [
+    // { name: "CARBON", quantity: 404, icon: "carbon.png", image: "carbon.png" },
     // { name: "GLASS", quantity: 65, icon: "glass.png", image: "glass.png"},
     // { name: "CERAMIC", quantity: 12, icon: "ceramic.png", image: "ceramic.png" },
     // { name: "ALUMINUM", quantity: 55, icon: "aluminum.png", image: "aluminum.png" },
@@ -36,18 +40,28 @@ export class InventoryItemComponent {
     // { name: "HEMATITE", quantity: 18, icon: "hematite.png", image: "hematite.png" },
     // { name: "TITANITE", quantity: 28, icon: "titanite.png", image: "titanite.png" },
     // { name: "ASTRONIUM", quantity: 38, icon: "astronium.png", image: "astronium.png" },
-  ]
+  // ]
   key: number = 0;
 
   constructor(private service: ResourceService) { }
 
   ngOnInit() {
-    console.log("Inventory Item Component Initialized");
-    this.service.getAllResources("sylva").subscribe((data) => {
-      console.log(data);
-      this.data = data;
-    });
-      
+    if (this.currentPlanet.name === undefined) {
+      this.service.getAllResources("sylva").subscribe((data) => {
+        this.data = data;
+      });
+    } else {
+      this.service.getAllResources(this.currentPlanet.name).subscribe((data) => {
+        this.data = data;
+      });
+    }     
   }
-    
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['currentPlanet'] && !changes['currentPlanet'].firstChange) {
+      this.service.getAllResources(this.currentPlanet.name).subscribe((data) => {
+        this.data = data;
+      });
+    }
+  }
 }

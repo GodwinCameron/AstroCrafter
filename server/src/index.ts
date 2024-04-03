@@ -4,6 +4,7 @@ import AppDataSource from "./dataSource";
 import resourceRouter from "./routes/resourcesRoute";
 import planetRouter from "./routes/planetsRoute";
 import sylvaRouter from "./routes/sylvaRoute";
+import desoloRouter from "./routes/desoloRoute";
 
 const cors = require('cors');
 const app = express();
@@ -21,6 +22,7 @@ const appDataSource = AppDataSource
 
 app.use('/resources', resourceRouter);
 app.use('/sylva', sylvaRouter);
+app.use('/desolo', desoloRouter);
 app.use('/planets', planetRouter);
 
 

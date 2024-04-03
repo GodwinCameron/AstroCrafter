@@ -9,14 +9,13 @@ resourceRouter.use(express.json());
 const appDataSource = AppDataSource;
 
 resourceRouter.get("/", async (req, res) => {
-    try{
-        const items = await appDataSource.getRepository(Resources).find();
-        res.send(items);
+    try {
+        const resources = await appDataSource.getRepository(Resources).find({ relations: ['sylvas'] });
+        res.json(resources);
     } catch (error) {
         console.log(error);
         res.status(500).send("Internal Server Error");
     }
-        
-})
+});
 
 export default resourceRouter;

@@ -3,7 +3,7 @@
     <div class="content">
       <p>Planet Selector!</p>
       <div class="planet-holder">
-        <app-planet-option-large *ngFor="let item of data; let i = index" [data]="data" [key]="i"></app-planet-option-large>
+        <app-planet-option-large *ngFor="let item of data; let i = index" [data]="data" [key]="i" (currentPlanetChange)="handleCurrentPlanetChange($event)" [currentPlanet]="currentPlanet"></app-planet-option-large>
       </div>
       <button (click)="minimize()">Minimize 🢃</button>
     </div>

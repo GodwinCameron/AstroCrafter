@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PlanetService } from '../../services/planet.service';
 import { PlanetOptionLargeComponent } from '../planet-option-large/planet-option-large.component';
@@ -14,13 +14,13 @@ export class PlanetSelectorLargeComponent {
   
   data: any;
   key: number = 0;
+  @Input() currentPlanet: any = '';
+  @Output() currentPlanetChange = new EventEmitter<any>();
 
   constructor(private service: PlanetService) { }
 
   ngOnInit() {
-    console.log("Inventory Item Component Initialized");
     this.service.getAllPlanets().subscribe((data) => {
-      console.log(data);
       this.data = data;
     });
       
@@ -31,6 +31,11 @@ export class PlanetSelectorLargeComponent {
     if (planetSelectorLarge) {
       planetSelectorLarge.setAttribute('style', 'margin-top: 0vh');
     }
+  }
+
+  handleCurrentPlanetChange(newCurrentPlanet: any) {
+    this.currentPlanet = newCurrentPlanet;
+    this.currentPlanetChange.emit(this.currentPlanet);
   }
 
 }

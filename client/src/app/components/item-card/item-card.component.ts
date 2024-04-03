@@ -10,6 +10,7 @@ import { Component, Input } from '@angular/core';
 export class ItemCardComponent {
   @Input() data: any;
   @Input() key!: number;
+  @Input() currentPlanet: any = '';
   
   // get dataNameLength(): number {
   //   return this.data.name.length;

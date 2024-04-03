@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit, Input } from '@angular/core';
 import { InventoryItemComponent } from '../inventory-item/inventory-item.component';
 import { InventoryCraftingComponent } from '../inventory-crafting/inventory-crafting.component';
 import { CommonModule } from '@angular/common';
@@ -14,11 +14,14 @@ import { RefineryComponent } from '../refinery/refinery.component';
 })
 export class MainPanelComponent implements AfterViewInit {
 
+  @Input() currentPlanet: any = '';
+
+
   // Provided by ChatGPT: =================================================================================================
   // ======================================================================================================================
   @ViewChild('contentElement', { static: false }) contentElement!: ElementRef;
   @ViewChild('itemCardElement', { static: false }) itemCardElement!: ElementRef;
-  navItemsClicked: boolean[] = [false, false, false, false]; // Keep track of clicked state for each nav item
+  navItemsClicked: boolean[] = [true, false, false, false]; // Keep track of clicked state for each nav item
 
   ngAfterViewInit() {
     if (this.contentElement) {

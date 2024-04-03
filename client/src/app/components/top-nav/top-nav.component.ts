@@ -9,7 +9,8 @@ import { PlanetService } from '../../services/planet.service';
   styleUrl: './top-nav.component.sass',
 })
 export class TopNavComponent implements OnInit {
-  @Input() currentPlanet: string = '';
+
+  @Input() currentPlanet: any;
   @Input() color: string = '';
 
   constructor(private planetService: PlanetService) {}

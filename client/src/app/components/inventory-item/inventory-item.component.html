@@ -3,7 +3,7 @@
       INVENTORY........................................................................................................................................
     </h1>
     <div class="container">
-      <app-item-card *ngFor="let item of data; let i = index" [data]="data" [key]="i"></app-item-card>
+      <app-item-card *ngFor="let item of data; let i = index" [data]="data" [key]="i" [currentPlanet]="currentPlanet"></app-item-card>
     </div>
   </div>
   

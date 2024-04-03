@@ -38,8 +38,8 @@ export class Planets {
 
 //relationships
 // Many-to-Many relationship to resources
-@ManyToMany(() => Resources, (resources) => resources.planets)
-public resources?: Resources[];
+// @ManyToMany(() => Resources, (resources) => resources.planets)
+// public resources?: Resources[];
 
 }
 

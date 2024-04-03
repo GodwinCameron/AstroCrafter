@@ -1,10 +1,11 @@
 <div class="block">
-  <div class="title-section">
+  <div class="title-section" [style.border-color]="currentPlanet.color">
     <div class="nav">
       <div
         class="nav-item"
         (click)="toggleNavItem(0)"
         [class.clicked]="navItemsClicked[0]"
+        [style.background-color]="navItemsClicked[0] ? currentPlanet.color : ''"
       >
         <img src="../../../assets/nav-star.png" />
       </div>
@@ -12,6 +13,7 @@
         class="nav-item"
         (click)="toggleNavItem(1)"
         [class.clicked]="navItemsClicked[1]"
+        [style.background-color]="navItemsClicked[1] ? currentPlanet.color : ''"
       >
         <img src="../../../assets/nav-star.png" />
       </div>
@@ -19,6 +21,7 @@
         class="nav-item"
         (click)="toggleNavItem(2)"
         [class.clicked]="navItemsClicked[2]"
+        [style.background-color]="navItemsClicked[2] ? currentPlanet.color : ''"
       >
         <img src="../../../assets/nav-star.png" />
       </div>
@@ -26,17 +29,18 @@
         class="nav-item"
         (click)="toggleNavItem(3)"
         [class.clicked]="navItemsClicked[3]"
+        [style.background-color]="navItemsClicked[3] ? currentPlanet.color : ''"
       >
         <img src="../../../assets/nav-star.png" />
       </div>
     </div>
 
-    <div class="name">PLANET - VESANIA</div>
+    <div class="name" [style.color]="currentPlanet.color">PLANET - {{ currentPlanet.name.toUpperCase() }}</div>
   </div>
   <div class="content" #contentElement>
     <div class="item-card" #itemCardElement>
       <div *ngIf="navItemsClicked[0]">
-        <app-inventory-item/>
+        <app-inventory-item [currentPlanet]="currentPlanet"></app-inventory-item>
       </div>
       <div *ngIf="navItemsClicked[1]">
         <app-inventory-crafting/>

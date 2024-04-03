@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -10,13 +10,18 @@ import { CommonModule } from '@angular/common';
 })
 export class PlanetOptionLargeComponent {
 
-  @Input() data: any;
+@Input() data: any;
   @Input() key!: number;
+  @Input() currentPlanet: any = '';
+  @Output() currentPlanetChange = new EventEmitter<any>();
 
   constructor() { }
 
   handlePlanetChange() {
-    console.log(this.data[this.key].name);
+    this.currentPlanet = this.data[this.key];
+    this.currentPlanetChange.emit(this.currentPlanet);
+    console.log(this.currentPlanet);
+    
     const planetSelectorLarge = document.querySelector('app-planet-selector-large');
     if (planetSelectorLarge) {
       planetSelectorLarge.setAttribute('style', 'margin-top: 0vh');
