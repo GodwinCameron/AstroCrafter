@@ -12,7 +12,7 @@ npm-debug.log
 yarn-error.log
 
 server/node_modules
-server/dataSource
+server/src/dataSource
 
 # IDEs and editors
 .idea/
