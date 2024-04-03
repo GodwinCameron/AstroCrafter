@@ -8,10 +8,10 @@ import { Observable } from 'rxjs';
 export class ResourceService {
   constructor(private http: HttpClient) { }
 
-  private baseUrl = 'http://localhost:3001/resources';
+  private baseUrl = 'http://localhost:3001/';
 
-  getAllResources(): Observable<any[]> {
-    return this.http.get<any[]>(this.baseUrl);
+  getAllResources(planetName: string): Observable<any[]> {
+    return this.http.get<any[]>(this.baseUrl+planetName);
   }
 
 }
