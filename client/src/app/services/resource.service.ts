@@ -18,6 +18,7 @@ export class ResourceService {
     const body = { name:name, id: itemId, quant: 0 };
     console.log(this.baseUrl+planetName, body);
     this.http.put<any[]>(this.baseUrl+planetName, body).subscribe();
+    return;
   }
 
 

@@ -28,6 +28,7 @@ export class PlanetComponent implements AfterViewInit {
   currentPlanet: any = {
     name: 'Sylva',
     image: 'https://astroneer.wiki/wp-content/uploads/2022/06/silva-1.webp',
+    changed: false,
   };
 
   constructor(

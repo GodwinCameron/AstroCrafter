@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, AfterViewInit, Input } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit, Input, Output, EventEmitter } from '@angular/core';
 import { InventoryItemComponent } from '../inventory-item/inventory-item.component';
 import { InventoryCraftingComponent } from '../inventory-crafting/inventory-crafting.component';
 import { CommonModule } from '@angular/common';
@@ -16,13 +16,14 @@ import { ItemCollectorComponent } from '../item-collector/item-collector.compone
 export class MainPanelComponent implements AfterViewInit {
 
   @Input() currentPlanet: any = '';
+  @Output() currentPlanetChange = new EventEmitter<any>();
 
 
   // Provided by ChatGPT: =================================================================================================
   // ======================================================================================================================
   @ViewChild('contentElement', { static: false }) contentElement!: ElementRef;
   @ViewChild('itemCardElement', { static: false }) itemCardElement!: ElementRef;
-  navItemsClicked: boolean[] = [true, false, false, false]; // Keep track of clicked state for each nav item
+  navItemsClicked: boolean[] = [false, false, false, false, true]; // Keep track of clicked state for each nav item
 
   ngAfterViewInit() {
     if (this.contentElement) {
@@ -46,5 +47,10 @@ export class MainPanelComponent implements AfterViewInit {
     this.navItemsClicked[index] = true;
   }
   // ======================================================================================================================
+
+  handleCurrentPlanetChange(newCurrentPlanet: any) {
+    this.currentPlanet = newCurrentPlanet;
+    this.currentPlanetChange.emit(this.currentPlanet);
+  }
 
 }

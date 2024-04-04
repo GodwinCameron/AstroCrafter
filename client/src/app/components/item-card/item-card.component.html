@@ -1,11 +1,11 @@
 <div class="item">
   <div class="info" [style.background-color]="currentPlanet.color">
-    <div class="icon"><img src="../../../assets/icons/{{ data[key].resource.name.toLowerCase() }}.png" alt="{{ data[key].icon}}" /></div>
+    <div class="icon"><img src="../../../assets/icons/{{ data[index].resource.name.toLowerCase() }}.png" alt="{{ data[index].icon}}" /></div>
     <div class="item-image">
-      <img src="../../../assets/resources/{{ data[key].resource.name.toLowerCase() }}.png" alt="{{ data[key].image}}"/>
+      <img src="../../../assets/resources/{{ data[index].resource.name.toLowerCase() }}.png" alt="{{ data[index].image}}"/>
     </div>
-    ...x{{ data[key].quantity }}......
-    <p>{{ data[key].resource.name }}</p>
+    ...x{{ data[index].quantity }}......
+    <p>{{ data[index].resource.name }}</p>
   </div>
   <div class="button-section">
     <div class="button transfer">TRANSFER</div>

@@ -1,16 +1,15 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-planet-option-large',
+  selector: 'app-planet-option',
   standalone: true,
-  imports: [ CommonModule ],
-  templateUrl: './planet-option-large.component.html',
-  styleUrl: './planet-option-large.component.sass'
+  imports: [],
+  templateUrl: './planet-option.component.html',
+  styleUrl: './planet-option.component.sass'
 })
-export class PlanetOptionLargeComponent {
+export class PlanetOptionComponent {
 
-@Input() data: any;
+  @Input() data: any;
   @Input() key!: number;
   @Input() currentPlanet: any = '';
   @Output() currentPlanetChange = new EventEmitter<any>();
@@ -20,6 +19,7 @@ export class PlanetOptionLargeComponent {
   handlePlanetChange() {
     this.currentPlanet = this.data[this.key];
     this.currentPlanetChange.emit(this.currentPlanet);
+    console.log(this.currentPlanet);
     
     const planetSelectorLarge = document.querySelector('app-planet-selector-large');
     if (planetSelectorLarge) {

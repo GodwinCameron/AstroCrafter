@@ -1,1 +1,15 @@
-<p>planet-selector works!</p>
+<div class="main">
+  <h1>
+    PLANET
+    SELECTOR.......................................................................................................................
+  </h1>
+  <div class="container">
+    <app-planet-option
+      *ngFor="let item of data; let i = index"
+      [data]="data"
+      [key]="i"
+      (currentPlanetChange)="handleCurrentPlanetChange($event)"
+      [currentPlanet]="currentPlanet"
+    ></app-planet-option>
+  </div>
+</div>

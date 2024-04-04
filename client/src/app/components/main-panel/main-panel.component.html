@@ -37,30 +37,39 @@
         class="nav-item"
         (click)="toggleNavItem(4)"
         [class.clicked]="navItemsClicked[4]"
-        [style.background-color]="navItemsClicked[3] ? currentPlanet.color : ''"
+        [style.background-color]="navItemsClicked[4] ? currentPlanet.color : ''"
       >
         <img src="../../../assets/nav-star.png" />
       </div>
     </div>
 
-    <div class="name" [style.color]="currentPlanet.color">PLANET - {{ currentPlanet.name.toUpperCase() }}</div>
+    <div class="name" [style.color]="currentPlanet.color">
+      PLANET - {{ currentPlanet.name.toUpperCase() }}
+    </div>
   </div>
   <div class="content" #contentElement>
     <div class="item-card" #itemCardElement>
       <div *ngIf="navItemsClicked[0]">
-        <app-inventory-item [currentPlanet]="currentPlanet"></app-inventory-item>
+        <app-inventory-item
+          [currentPlanet]="currentPlanet"
+        ></app-inventory-item>
       </div>
       <div *ngIf="navItemsClicked[1]">
-        <app-inventory-crafting/>
+        <app-inventory-crafting />
       </div>
       <div *ngIf="navItemsClicked[2]">
-        <app-refinery/>
+        <app-refinery />
       </div>
       <div *ngIf="navItemsClicked[3]">
-        <app-planet-selector/>
+        <app-planet-selector
+          [currentPlanet]="currentPlanet"
+          (currentPlanetChange)="handleCurrentPlanetChange($event)"
+        ></app-planet-selector>
       </div>
       <div *ngIf="navItemsClicked[4]">
-        <app-item-collector/>
+        <app-item-collector
+          [currentPlanet]="currentPlanet"
+        ></app-item-collector>
       </div>
     </div>
   </div>

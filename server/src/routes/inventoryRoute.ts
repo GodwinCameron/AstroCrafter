@@ -51,7 +51,6 @@ inventoryRouter.get("/:planetName", async (req, res) => {
 });
 
 inventoryRouter.put("/:planetName", async (req, res) => {
-  console.log("request received");
   try {
     const planetName = req.params.planetName;
 
@@ -59,31 +58,24 @@ inventoryRouter.put("/:planetName", async (req, res) => {
     switch (planetName) {
       case "Sylva":
         Entity = (await import("../entity/sylva")).Sylva;
-        console.log(Entity, "reached");
         break;
       case "Desolo":
         Entity = (await import("../entity/desolo")).Desolo;
-        console.log(Entity, "reached");
         break;
       case "Calidor":
         Entity = (await import("../entity/calidor")).Calidor;
-        console.log(Entity, "reached");
         break;
       case "Vesania":
         Entity = (await import("../entity/vesania")).Vesania;
-        console.log(Entity, "reached");
         break;
       case "Novus":
         Entity = (await import("../entity/novus")).Novus;
-        console.log(Entity, "reached");
         break;
       case "Glacio":
         Entity = (await import("../entity/glacio")).Glacio;
-        console.log(Entity, "reached");
         break;
       case "Atrox":
         Entity = (await import("../entity/atrox")).Atrox;
-        console.log(Entity, "reached");
         break;
       default:
         res.status(404).send("Planet not found");

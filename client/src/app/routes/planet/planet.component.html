@@ -2,7 +2,10 @@
   <div class="filter">
     <app-top-nav [currentPlanet]="currentPlanet" [color]="color"></app-top-nav>
     <div class="main">
-      <app-main-panel [currentPlanet]="currentPlanet"></app-main-panel>
+      <app-main-panel
+        [currentPlanet]="currentPlanet"
+        (currentPlanetChange)="handleCurrentPlanetChange($event)"
+      ></app-main-panel>
       <div
         class="planet-orb rotating"
         (click)="changePlanet()"

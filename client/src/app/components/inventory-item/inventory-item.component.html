@@ -7,8 +7,9 @@
       <app-item-card
         *ngIf="item.quantity > 0"
         [data]="data"
-        [key]="i"
+        [index]="i"
         [currentPlanet]="currentPlanet"
+        (dataChanged)="handleDataChange()"
       ></app-item-card>
     </ng-container>
   </div>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ResourceService } from '../../services/resource.service';
 
 @Component({
@@ -10,29 +10,20 @@ import { ResourceService } from '../../services/resource.service';
 })
 export class ItemCardComponent {
   @Input() data: any;
-  @Input() key!: number;
+  @Input() index!: number;
   @Input() currentPlanet: any = '';
-
-  // get dataNameLength(): number {
-  //   return this.data.name.length;
-  //   console.log(this.data.name.length);
-
-  // }
+  @Output() dataChanged = new EventEmitter<any>();
 
   constructor(private service: ResourceService) {}
 
   handleDiscard() {
-    console.log(
-      'discarding: ',
-      this.currentPlanet.name,
-      this.data[this.key].resource.name,
-      this.data[this.key].resource.id
-    );
-
     this.service.discardItem(
       this.currentPlanet.name,
-      this.data[this.key].resource.name,
-      this.data[this.key].resource.id
+      this.data[this.index].resource.name,
+      this.data[this.index].resource.id
     );
+    setTimeout(() => {
+      this.dataChanged.emit();
+    }, 100);
   }
 }
