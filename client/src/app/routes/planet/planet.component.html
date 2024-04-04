@@ -1,15 +1,19 @@
 <body>
   <div class="filter">
-    <app-top-nav
-      [currentPlanet]="currentPlanet"
-      [color]="color"
-    ></app-top-nav>
+    <app-top-nav [currentPlanet]="currentPlanet" [color]="color"></app-top-nav>
     <div class="main">
       <app-main-panel [currentPlanet]="currentPlanet"></app-main-panel>
-      <div class="planet-orb rotating" (click)="changePlanet()">
+      <div
+        class="planet-orb rotating"
+        (click)="changePlanet()"
+        [style.background-image]="'url(' + currentPlanet.image + ')'"
+      >
         <div class="hover-effect"></div>
       </div>
     </div>
-    <app-planet-selector-large (currentPlanetChange)="handleCurrentPlanetChange($event)" [currentPlanet]="currentPlanet"></app-planet-selector-large>
+    <app-planet-selector-large
+      (currentPlanetChange)="handleCurrentPlanetChange($event)"
+      [currentPlanet]="currentPlanet"
+    ></app-planet-selector-large>
   </div>
 </body>

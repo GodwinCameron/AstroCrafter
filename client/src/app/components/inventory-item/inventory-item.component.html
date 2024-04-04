@@ -1,9 +1,15 @@
 <div class="main">
-    <h1>
-      INVENTORY........................................................................................................................................
-    </h1>
-    <div class="container">
-      <app-item-card *ngFor="let item of data; let i = index" [data]="data" [key]="i" [currentPlanet]="currentPlanet"></app-item-card>
-    </div>
+  <h1>
+    INVENTORY........................................................................................................................................
+  </h1>
+  <div class="container">
+    <ng-container *ngFor="let item of data; let i = index">
+      <app-item-card
+        *ngIf="item.quantity > 0"
+        [data]="data"
+        [key]="i"
+        [currentPlanet]="currentPlanet"
+      ></app-item-card>
+    </ng-container>
   </div>
-  
+</div>

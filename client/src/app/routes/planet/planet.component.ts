@@ -1,4 +1,10 @@
-import { Component, Input, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  ElementRef,
+  Renderer2,
+  AfterViewInit,
+} from '@angular/core';
 import { InventoryItemComponent } from '../../components/inventory-item/inventory-item.component';
 import { MainPanelComponent } from '../../components/main-panel/main-panel.component';
 import { TopNavComponent } from '../../components/top-nav/top-nav.component';
@@ -8,24 +14,31 @@ import { PlanetSelectorLargeComponent } from '../../components/planet-selector-l
 @Component({
   selector: 'app-planet',
   standalone: true,
-  imports: [InventoryItemComponent, MainPanelComponent, TopNavComponent, PlanetSelectorLargeComponent],
+  imports: [
+    InventoryItemComponent,
+    MainPanelComponent,
+    TopNavComponent,
+    PlanetSelectorLargeComponent,
+  ],
   templateUrl: './planet.component.html',
-  styleUrl: './planet.component.sass'
+  styleUrl: './planet.component.sass',
 })
 export class PlanetComponent implements AfterViewInit {
-
-
   color: string = '#00ADEB';
-  // color: string = '#eb00d8';
-  currentPlanet: any = { name: 'Sylva' };
+  currentPlanet: any = {
+    name: 'Sylva',
+    image: 'https://astroneer.wiki/wp-content/uploads/2022/06/silva-1.webp',
+  };
 
   constructor(
     private planetService: PlanetService,
     private renderer: Renderer2
-  ) { }
+  ) {}
 
   ngAfterViewInit() {
-    const planetSelectorLarge = document.querySelector('app-planet-selector-large');
+    const planetSelectorLarge = document.querySelector(
+      'app-planet-selector-large'
+    );
     if (planetSelectorLarge) {
       this.renderer.setStyle(planetSelectorLarge, 'marginTop', '0vh');
     }
@@ -35,7 +48,9 @@ export class PlanetComponent implements AfterViewInit {
     return this.planetService.getPlanet();
   }
   changePlanet() {
-    const planetSelectorLarge = document.querySelector('app-planet-selector-large');
+    const planetSelectorLarge = document.querySelector(
+      'app-planet-selector-large'
+    );
     if (planetSelectorLarge) {
       this.renderer.setStyle(planetSelectorLarge, 'marginTop', '-100vh');
     }
@@ -44,5 +59,4 @@ export class PlanetComponent implements AfterViewInit {
     this.currentPlanet = newCurrentPlanet;
     // Perform any additional actions here
   }
-
 }

@@ -48,11 +48,11 @@ export class InventoryItemComponent {
   ngOnInit() {
     if (this.currentPlanet.name === undefined) {
       this.service.getAllResources("sylva").subscribe((data) => {
-        this.data = data;
+        this.data = data.sort((a,b) => a.id - b.id);
       });
     } else {
       this.service.getAllResources(this.currentPlanet.name).subscribe((data) => {
-        this.data = data;
+        this.data = data.sort((a,b) => a.id - b.id);
       });
     }     
   }
@@ -60,7 +60,7 @@ export class InventoryItemComponent {
   ngOnChanges(changes: SimpleChanges) {
     if (changes['currentPlanet'] && !changes['currentPlanet'].firstChange) {
       this.service.getAllResources(this.currentPlanet.name).subscribe((data) => {
-        this.data = data;
+        this.data = data.sort((a,b) => a.id - b.id);
       });
     }
   }

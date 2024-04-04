@@ -4,11 +4,12 @@ import { InventoryCraftingComponent } from '../inventory-crafting/inventory-craf
 import { CommonModule } from '@angular/common';
 import { PlanetSelectorComponent } from '../planet-selector/planet-selector.component';
 import { RefineryComponent } from '../refinery/refinery.component';
+import { ItemCollectorComponent } from '../item-collector/item-collector.component';
 
 @Component({
   selector: 'app-main-panel',
   standalone: true,
-  imports: [InventoryItemComponent, InventoryCraftingComponent, CommonModule, PlanetSelectorComponent, RefineryComponent],
+  imports: [InventoryItemComponent, InventoryCraftingComponent, CommonModule, PlanetSelectorComponent, RefineryComponent, ItemCollectorComponent],
   templateUrl: './main-panel.component.html',
   styleUrl: './main-panel.component.sass',
 })

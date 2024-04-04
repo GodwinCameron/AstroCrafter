@@ -33,6 +33,14 @@
       >
         <img src="../../../assets/nav-star.png" />
       </div>
+      <div
+        class="nav-item"
+        (click)="toggleNavItem(4)"
+        [class.clicked]="navItemsClicked[4]"
+        [style.background-color]="navItemsClicked[3] ? currentPlanet.color : ''"
+      >
+        <img src="../../../assets/nav-star.png" />
+      </div>
     </div>
 
     <div class="name" [style.color]="currentPlanet.color">PLANET - {{ currentPlanet.name.toUpperCase() }}</div>
@@ -50,6 +58,9 @@
       </div>
       <div *ngIf="navItemsClicked[3]">
         <app-planet-selector/>
+      </div>
+      <div *ngIf="navItemsClicked[4]">
+        <app-item-collector/>
       </div>
     </div>
   </div>

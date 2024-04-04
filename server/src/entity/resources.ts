@@ -3,6 +3,9 @@ import { Sylva } from "./sylva";
 import { Desolo } from "./desolo";
 import { Calidor } from "./calidor";
 import { Vesania } from "./vesania";
+import { Novus } from "./novus";
+import { Glacio } from "./glacio";
+import { Atrox } from "./atrox";
 
 @Entity()
 export class Resources {
@@ -29,4 +32,10 @@ export class Resources {
   calidor!: Calidor[];
   @OneToMany(() => Vesania, vesania => vesania.resource)
   vesania!: Vesania[];
+  @OneToMany(() => Novus, novus => novus.resource)
+  novus!: Novus[];
+  @OneToMany(() => Glacio, glacio => glacio.resource)
+  glacio!: Glacio[];
+  @OneToMany(() => Atrox, atrox => atrox.resource)
+  atrox!: Atrox[];
 }
