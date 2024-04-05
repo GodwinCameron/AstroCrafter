@@ -12,6 +12,7 @@ export class TopNavComponent implements OnInit {
 
   @Input() currentPlanet: any;
   @Input() color: string = '';
+  @Input() wallet: number = 0;  
 
   constructor(private planetService: PlanetService) {}
 

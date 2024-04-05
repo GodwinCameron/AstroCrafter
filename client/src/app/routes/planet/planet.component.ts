@@ -10,6 +10,7 @@ import { MainPanelComponent } from '../../components/main-panel/main-panel.compo
 import { TopNavComponent } from '../../components/top-nav/top-nav.component';
 import { PlanetService } from '../../services/planet.service';
 import { PlanetSelectorLargeComponent } from '../../components/planet-selector-large/planet-selector-large.component';
+import { TransferPanelComponent } from '../../components/transfer-panel/transfer-panel.component';
 
 @Component({
   selector: 'app-planet',
@@ -19,6 +20,7 @@ import { PlanetSelectorLargeComponent } from '../../components/planet-selector-l
     MainPanelComponent,
     TopNavComponent,
     PlanetSelectorLargeComponent,
+    TransferPanelComponent
   ],
   templateUrl: './planet.component.html',
   styleUrl: './planet.component.sass',
@@ -30,11 +32,20 @@ export class PlanetComponent implements AfterViewInit {
     image: 'https://astroneer.wiki/wp-content/uploads/2022/06/silva-1.webp',
     changed: false,
   };
+  walletAmount: string = localStorage.getItem('wallet') || '1000';
+  wallet: number = parseInt(this.walletAmount);
 
   constructor(
     private planetService: PlanetService,
     private renderer: Renderer2
   ) {}
+
+  ngOnInit(): void {
+      const walletAmount = localStorage.getItem('wallet');
+      if (!walletAmount) {
+        localStorage.setItem('wallet', '1000');
+      }
+    }
 
   ngAfterViewInit() {
     const planetSelectorLarge = document.querySelector(
@@ -58,6 +69,5 @@ export class PlanetComponent implements AfterViewInit {
   }
   handleCurrentPlanetChange(newCurrentPlanet: any) {
     this.currentPlanet = newCurrentPlanet;
-    // Perform any additional actions here
   }
 }

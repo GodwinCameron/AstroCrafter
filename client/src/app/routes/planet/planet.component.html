@@ -1,6 +1,6 @@
 <body>
   <div class="filter">
-    <app-top-nav [currentPlanet]="currentPlanet" [color]="color"></app-top-nav>
+    <app-top-nav [wallet]="wallet" [currentPlanet]="currentPlanet" [color]="color"></app-top-nav>
     <div class="main">
       <app-main-panel
         [currentPlanet]="currentPlanet"
@@ -18,5 +18,6 @@
       (currentPlanetChange)="handleCurrentPlanetChange($event)"
       [currentPlanet]="currentPlanet"
     ></app-planet-selector-large>
+    <app-transfer-panel></app-transfer-panel>
   </div>
 </body>
