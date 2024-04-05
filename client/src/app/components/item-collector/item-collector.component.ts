@@ -8,31 +8,23 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CollectableComponent, CommonModule],
   templateUrl: './item-collector.component.html',
-  styleUrl: './item-collector.component.sass'
+  styleUrl: './item-collector.component.sass',
 })
 export class ItemCollectorComponent {
-
   data: any;
   @Input() currentPlanet: any;
-  
+
   key: number = 0;
 
-  constructor(private service: ResourceService) { }
+  constructor(private service: ResourceService) {}
 
   ngOnInit() {
-    if (this.currentPlanet.name === undefined) {
-      this.service.getAllResources('sylva').subscribe((data) => {
+    if (!this.data) {
+      this.service.getAllResources(this.currentPlanet.name).subscribe((data) => {
         this.data = data.sort((a, b) => a.id - b.id);
-        console.log("DOING THINGS!!");
+        console.log(this.data);
       });
-    } else {
-      console.log("DOING THINGS!!");
-      this.service
-        .getAllResources(this.currentPlanet.name)
-        .subscribe((data) => {
-          this.data = data.sort((a, b) => a.id - b.id);
-        });
     }
   }
-
+  
 }

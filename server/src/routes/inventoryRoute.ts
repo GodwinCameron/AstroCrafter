@@ -40,9 +40,8 @@ inventoryRouter.get("/:planetName", async (req, res) => {
     }
 
     const planetData = await appDataSource
-      .getRepository(Entity)
-      .find({ relations: ["resource"] });
-
+      .getRepository(Entity)      
+      .find({ relations: ["resource"] }); 
     res.json(planetData);
   } catch (error) {
     console.log(error);

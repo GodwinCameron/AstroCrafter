@@ -3,36 +3,50 @@
     COLLECTION.........................................................................................................................................
   </h1>
   <div class="container" *ngIf="data">
-    <ng-container *ngFor="let item of data.slice(0, 9); let i = index">
+    <ng-container *ngFor="let item of data.slice(0, 8); let i = index">
       <app-collectable
         [data]="data"
         [index]="i"
         [currentPlanet]="currentPlanet"
       ></app-collectable>
     </ng-container>
-    <ng-container *ngIf="currentPlanet.name && currentPlanet.name !== 'Sylva'">
+    <ng-container *ngIf="currentPlanet.name == 'Sylva'">
       <app-collectable
         [data]="data"
         [index]="8"
         [currentPlanet]="currentPlanet"
       ></app-collectable>
     </ng-container>
-    <ng-container
-      *ngIf="
-        currentPlanet.name === 'Desolo' ||
-        currentPlanet.name === 'Calidor' ||
-        currentPlanet.name === 'Vesania' ||
-        currentPlanet.name === 'Novus' ||
-        currentPlanet.name === 'Glacio' ||
-        currentPlanet.name === 'Atrox'
-      "
-    >
+    <ng-container *ngIf="currentPlanet.name === 'Desolo'">
       <app-collectable
-        *ngFor="let item of data.slice(9, 15); let i = index"
         [data]="data"
-        [index]="i + 9"
+        [index]="9"
         [currentPlanet]="currentPlanet"
       ></app-collectable>
     </ng-container>
+    <ng-container *ngIf="currentPlanet.name === 'Calidor'">
+        <app-collectable
+          [data]="data"
+          [index]="43"
+          [currentPlanet]="currentPlanet"
+        ></app-collectable>
+      </ng-container>
+      <ng-container *ngIf="currentPlanet.name === 'Vesania'">
+        <app-collectable
+          [data]="data"
+          [index]="10"
+          [currentPlanet]="currentPlanet"
+        ></app-collectable>
+      </ng-container>
+      <ng-container *ngIf="currentPlanet.name === 'Novus'">
+        <app-collectable
+          [data]="data"
+          [index]="44"
+          [currentPlanet]="currentPlanet"
+        ></app-collectable>
+      </ng-container>
   </div>
 </div>
+
+
+

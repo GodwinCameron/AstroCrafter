@@ -28,6 +28,7 @@ export class InventoryItemComponent {
         .getAllResources(this.currentPlanet.name)
         .subscribe((data) => {
           this.data = data.sort((a, b) => a.id - b.id);
+          console.log(this.data);
         });
     }
   }
