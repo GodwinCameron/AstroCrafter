@@ -2,6 +2,7 @@ import { Component, ElementRef, Input, Output, ViewChild } from '@angular/core';
 import { RecipeService } from '../../services/recipe.service';
 import { CommonModule } from '@angular/common';
 import { RequiredIngredientCardComponent } from '../required-ingredient-card/required-ingredient-card.component';
+import { ResourceService } from '../../services/resource.service';
 
 @Component({
   selector: 'app-inventory-crafting',
@@ -18,11 +19,15 @@ export class InventoryCraftingComponent {
 
   recipes: any;
   index: number = 0;
-  @Input() selctedRecipe: any;
+  @Input() selectedRecipe: any;
+  @Input() ingredientNumber: number = 0;
+  @Input() currentPlanet: any;
+  @Input() wallet: number = 0;
+  @Input() inventory: any;
 
   
 
-  constructor(private service: RecipeService) {}
+  constructor(private service: RecipeService, private resourceService: ResourceService) {}
 
   ngOnInit() {
     // use service to get all recipes
@@ -30,6 +35,12 @@ export class InventoryCraftingComponent {
       console.log(data);
       this.recipes = data;
     });
+
+    this.resourceService.getAllResources(this.currentPlanet.name).subscribe((data) => {
+      this.inventory = data;
+      console.log(this.inventory);
+    });
+
   }
 
   ngAfterViewInit() {
@@ -41,7 +52,7 @@ export class InventoryCraftingComponent {
   handleClick(index: number) {
 
     console.log(this.recipes[index]);
-    this.selctedRecipe = this.recipes[index];
+    this.selectedRecipe = this.recipes[index];
     
 
     if (this.ingredientsElement) {

@@ -7,60 +7,33 @@
       <p>SCHEMATICS:</p>
       <div class="block">
         <div class="recipe-name">
-          <p
-            *ngFor="let recipe of recipes; let i = index"
-            (click)="handleClick(i)"
-          >
-            <span>{{ recipe.name.toUpperCase() }}</span>
-            <span class="filler"></span>
-          </p>
+          <ng-container class="align" *ngFor="let recipe of recipes; let i = index">
+            <p (click)="handleClick(i)">
+              <span>{{ recipe.name.toUpperCase() }}</span>
+              <span class="filler"></span>
+            </p>
+            <p>.</p>
+          </ng-container>
         </div>
-
-        <!-- <p (click)="handleClick()">SMALL PRINTER.........................................................</p>
-          <p (click)="handleClick()">PACKAGER.........................................................</p>
-          <p (click)="handleClick()">LEVELING BLOCK.........................................................</p>
-          <p (click)="handleClick()">TETHERS.........................................................</p>
-          <p (click)="handleClick()">OXYGEN FILTERS.........................................................</p>
-          <p (click)="handleClick()">PORTABLE OXYGENATOR.........................................................</p>
-          <p (click)="handleClick()">SMALL GENERATOR.........................................................</p>
-          <p (click)="handleClick()">BEACON..................................................................</p>
-          <p (click)="handleClick()">WORKLIGHT.........................................................</p>
-          <p (click)="handleClick()">GLOWSTICKS...............................................................</p>
-          <p (click)="handleClick()">FLOODLIGHT................................................................</p>
-          <p (click)="handleClick()">SMALL CANISTER.........................................................</p>
-          <p (click)="handleClick()">POWER CELLS..............................................................</p>
-          <p (click)="handleClick()">SMALL SOLAR PANEL.........................................................</p>
-          <p (click)="handleClick()">SMALL WIND TURBINE.........................................................</p>
-          <p (click)="handleClick()">SMALL BATTERY.........................................................</p>
-          <p (click)="handleClick()">BOOST MOD.........................................................</p>
-          <p (click)="handleClick()">WIDE MOD.........................................................</p>
-          <p (click)="handleClick()">NARROW MOD.........................................................</p>
-          <p (click)="handleClick()">INHIBITOR MOD.........................................................</p>
-          <p (click)="handleClick()">ALIGNMENT MOD.........................................................</p>
-          <p (click)="handleClick()">DRILL MOD 1.........................................................</p>
-          <p (click)="handleClick()">DRILL MOD 2.........................................................</p>
-          <p (click)="handleClick()">DRILL MOD 3.........................................................</p>
-          <p (click)="handleClick()">DYNAMITE.........................................................</p>
-          <p (click)="handleClick()">FIREWORKS.........................................................</p>
-          <p (click)="handleClick()">SMALL CAMERA.........................................................</p>
-          <p (click)="handleClick()">SMALL TRUMPET HORN.........................................................</p>
-          <p (click)="handleClick()">SMALL SQUEAKY HORN.........................................................</p>
-          <p (click)="handleClick()">HOLOGRAPHIC FIGURINE.........................................................</p>
-          <p (click)="handleClick()">STONE FIGURINE.........................................................</p>
-          <p (click)="handleClick()">TERRAIN ANALYZER..........................................................</p>
-          <p (click)="handleClick()">PROBE SCANNER..........................................................</p>
-          <p (click)="handleClick()">SOLID-FUEL JUMP JET..........................................................</p>
-          <p (click)="handleClick()">HYDRAZINE JET PACK..........................................................</p>
-          <p (click)="handleClick()">HOVERBOARD..........................................................</p>
-          <p (click)="handleClick()">QT-RTG..........................................................</p> -->
       </div>
     </div>
     <div class="section ingredients">
       <p>INGREDIENTS REQUIRED:</p>
-      <div class="block" #ingredientsElement>
-        <app-required-ingredient-card
-          [selctedRecipe]="selctedRecipe"
-        ></app-required-ingredient-card>
+      <div class="block required-ingredients" #ingredientsElement>
+        <ng-container *ngIf="selectedRecipe">
+          <app-required-ingredient-card
+            [inventory]="inventory"
+            [selectedRecipe]="selectedRecipe"
+            [ingredientNumber]="1"
+          ></app-required-ingredient-card>
+          <ng-container *ngIf="selectedRecipe.ingredient_2_quantity > 0">
+            <app-required-ingredient-card
+              [inventory]="inventory"
+              [selectedRecipe]="selectedRecipe"
+              [ingredientNumber]="2"
+            ></app-required-ingredient-card>
+          </ng-container>
+        </ng-container>
       </div>
     </div>
     <div class="craft">
