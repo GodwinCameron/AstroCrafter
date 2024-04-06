@@ -7,7 +7,10 @@
       <p>SCHEMATICS:</p>
       <div class="block">
         <div class="recipe-name">
-          <ng-container class="align" *ngFor="let recipe of recipes; let i = index">
+          <ng-container
+            class="align"
+            *ngFor="let recipe of recipes; let i = index"
+          >
             <p (click)="handleClick(i)">
               <span>{{ recipe.name.toUpperCase() }}</span>
               <span class="filler"></span>
@@ -25,19 +28,26 @@
             [inventory]="inventory"
             [selectedRecipe]="selectedRecipe"
             [ingredientNumber]="1"
+            [ingredientsMet]="ingredientsMet"
           ></app-required-ingredient-card>
           <ng-container *ngIf="selectedRecipe.ingredient_2_quantity > 0">
             <app-required-ingredient-card
               [inventory]="inventory"
               [selectedRecipe]="selectedRecipe"
               [ingredientNumber]="2"
+              [ingredientsMet]="ingredientsMet"
             ></app-required-ingredient-card>
           </ng-container>
         </ng-container>
       </div>
     </div>
     <div class="craft">
-      <div class="button" #craftButtonElement><p>CRAFT</p></div>
+      <div class="button" #craftButtonElement>
+        <p>
+          <ng-container *ngIf="isCraftable()">CRAFT</ng-container>
+          <ng-container *ngIf="!isCraftable()">MISSING INGREDIENTS</ng-container>
+        </p>
+      </div>
     </div>
     <div class="section yeild">
       <p>YIELD:</p>

@@ -1,10 +1,46 @@
-<div class="main">
-    <div class="image">
-        <img [src]="'../../../assets/icons/' + selectedRecipe['ingredient_' + ingredientNumber].name.toLowerCase() + '.png'" alt="hi">
-    </div>
-    <p>{{ selectedRecipe['ingredient_' + ingredientNumber].name }}</p>
-    <div class="amount">
-        <h3>x</h3><h1>{{ selectedRecipe['ingredient_' + ingredientNumber + '_quantity'] }}</h1>
-    </div>
-    <p class="owned">You have {{ requiredItemAmount }}</p>
+<div
+  class="main"
+  [style]="
+    requiredItemAmount <
+    selectedRecipe['ingredient_' + ingredientNumber + '_quantity']
+      ? 'border-color: red;'
+      : ''
+  "
+>
+  <div class="image">
+    <img
+      [src]="
+        '../../../assets/icons/' +
+        selectedRecipe['ingredient_' + ingredientNumber].name.toLowerCase() +
+        '.png'
+      "
+      alt="hi"
+    />
+  </div>
+  <p >{{ selectedRecipe["ingredient_" + ingredientNumber].name }}</p>
+  <div class="amount">
+    <h3>x</h3>
+    <h1
+      [style]="
+        requiredItemAmount <
+        selectedRecipe['ingredient_' + ingredientNumber + '_quantity']
+          ? 'color: red;'
+          : ''
+      "
+    >
+      {{ selectedRecipe["ingredient_" + ingredientNumber + "_quantity"] }}
+    </h1>
+  </div>
+  <p class="owned">
+    You have
+    <span
+      [style]="
+        requiredItemAmount <
+        selectedRecipe['ingredient_' + ingredientNumber + '_quantity']
+          ? 'color: red;'
+          : 'color: #5F5F5F'
+      "
+      >{{ requiredItemAmount }}</span
+    >
+  </p>
 </div>
