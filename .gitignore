@@ -12,7 +12,11 @@ npm-debug.log
 yarn-error.log
 
 server/node_modules
+
+# dataSource was added before these ignore rules were added, therefore it is not ignored - to avoid futher issues, I'm leaving it as it is here as industry will manage all this in private files regardless
+server/src/dataSource
 server/src/dataSource.ts
+
 
 # IDEs and editors
 .idea/
