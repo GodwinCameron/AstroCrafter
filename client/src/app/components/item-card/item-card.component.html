@@ -1,15 +1,76 @@
 <div class="item">
   <div class="info" [style.background-color]="currentPlanet.color">
-    <div class="icon"><img src="../../../assets/icons/{{ data[index].resource.name.toLowerCase() }}.png" alt="{{ data[index].icon}}" /></div>
+    <div class="icon">
+      <img
+        src="../../../assets/icons/{{
+          data[index].resource.name.toLowerCase()
+        }}.png"
+        alt="{{ data[index].icon }}"
+      />
+    </div>
     <div class="item-image">
-      <img src="../../../assets/resources/{{ data[index].resource.name.toLowerCase() }}.png" alt="{{ data[index].image}}"/>
+      <img
+        src="../../../assets/resources/{{
+          data[index].resource.name.toLowerCase()
+        }}.png"
+        alt="{{ data[index].image }}"
+      />
     </div>
     ...x{{ data[index].quantity }}......
     <p>{{ data[index].resource.name }}</p>
   </div>
   <div class="button-section">
-    <div class="button transfer">TRANSFER</div>
-    <div class="button sell">SELL</div>
-    <div (click)="handleDiscard()" class="button discard">DISCARD</div>
+    <div
+      id="transfer{{ index }}"
+      (click)="handleTransfer($event)"
+      class="button transfer"
+    >
+      <p>TRANSFER</p>
+      <form id="form{{ index }}" (submit)="transferItems($event)">
+        <div class="input">
+          <label for="quantity{{ index }}">Amount:</label>
+          <input
+            class="quantity-input"
+            type="number"
+            id="quantity{{ index }}"
+            name="quantity"
+            min="1"
+            max="{{ data[index].quantity }}"
+            required
+          />
+        </div>
+        <div class="input">
+          <label for="planet{{ index }}">Planet:</label>
+          <select
+            style="color: black"
+            id="planet{{ index }}"
+            name="selectedPlanet"
+            required
+          >
+            <option style="color: black" value="" disabled selected>
+              Select a planet
+            </option>
+            <option
+              style="color: black"
+              *ngFor="let planet of planets"
+              [value]="planet.name"
+            >
+              {{ planet.name }}
+            </option>
+          </select>
+        </div>
+        <button type="submit">Transfer</button>
+      </form>
+    </div>
+    <button
+      class="cancel-button"
+      type="button"
+      (click)="handleCancel()"
+      id="cancel{{ index }}"
+    >
+      Cancel
+    </button>
+    <div class="button sell" id="sell{{ index }}">SELL</div>
+    <div (click)="handleDiscard()" class="button discard" id="discard{{ index }}">DISCARD</div>
   </div>
 </div>

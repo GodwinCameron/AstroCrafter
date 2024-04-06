@@ -45,6 +45,11 @@
         margin-right: auto
         margin-left: 0.5vw
         gap: 0.5vw
+        .cancel-button
+            display: none
+            background-color: #ff1100d1
+            outline: none
+            border: 1px solid white
         .button
             margin-right: auto
             display: flex
@@ -56,12 +61,44 @@
             padding-left: 5px
             padding-right: 5px
             &:hover
-                filter: brightness(2)
                 cursor: pointer
         .transfer
             background-color: #00ADEB
-            height: 12vh
+            form
+                display: none
+                flex-direction: row
+                gap: 0.5vh
+                color: grey
+                .input
+                    display: flex
+                    flex-direction: column
+                    margin-right: 1vw
+                .quantity-input
+                    display: flex
+                    align-items: center
+                    justify-content: center
+                    width: 1.5vw
+                input
+                    border: 1px solid white
+                    border-radius: 3px
+                    width: 10vw
+                    color: grey
+                    &:focus
+                        outline: none
+                button
+                    background-color: #00ADEB
+                    border: 1px solid white
+                    border-radius: 3px
+                    padding: 5px
+                    margin: 5px
+                    &:hover
+                        filter: brightness(2)
+                        cursor: pointer
         .sell
             background-color: #42FF00b5
+            &:hover
+                filter: brightness(2)
         .discard
             background-color: #FF0F00b5
+            &:hover
+                filter: brightness(2)

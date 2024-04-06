@@ -45,6 +45,25 @@
           [currentPlanet]="currentPlanet"
         ></app-collectable>
       </ng-container>
+      <ng-container *ngIf="currentPlanet.name === 'Glacio'">
+        <app-collectable
+          [data]="data"
+          [index]="11"
+          [currentPlanet]="currentPlanet"
+        ></app-collectable>
+        <app-collectable
+          [data]="data"
+          [index]="12"
+          [currentPlanet]="currentPlanet"
+        ></app-collectable>
+      </ng-container>
+      <ng-container *ngIf="currentPlanet.name === 'Atrox'">
+        <app-collectable
+          [data]="data"
+          [index]="13"
+          [currentPlanet]="currentPlanet"
+        ></app-collectable>
+      </ng-container>
   </div>
 </div>
 

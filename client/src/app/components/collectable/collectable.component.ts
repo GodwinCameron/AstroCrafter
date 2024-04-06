@@ -17,6 +17,8 @@ export class CollectableComponent {
   constructor(private service: ResourceService) {}
 
   handleCollect() {
+    // console.log('collecting: ', this.data[this.index].resource.collect_cost);
+    
     this.service.collectItem(
       this.currentPlanet.name,
       this.data[this.index].resource.name,

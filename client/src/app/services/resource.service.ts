@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, switchMap } from 'rxjs';
+import { Observable, concatMap, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -22,17 +22,35 @@ export class ResourceService {
   }
 
   collectItem(planetName: string, name: string, itemId: number) {
-    this.http.get<any>(this.baseUrl + planetName ).pipe(
-        switchMap(items => {
-            const currentQuantity = items[itemId - 1].quantity || 0; // Adjust index based on backend response
-            const newQuantity = currentQuantity + 1;
+    this.http
+      .get<any>(this.baseUrl + planetName)
+      .pipe(
+        concatMap((items) => {
 
-            const body = { name: name, id: itemId, quant: newQuantity };
-            console.log(this.baseUrl + planetName, body);
-            return this.http.put<any[]>(this.baseUrl + planetName, body);
+          // const currentQuantity = items[itemId - 1].quantity; 
+          // const newQuantity = currentQuantity + 1;
+  
+          const currentItem = items.find((item : any) => item.id === itemId);
+          if (!currentItem) {
+            throw new Error('Item not found');
+          }
+          const currentQuantity = currentItem.quantity;
+          const newQuantity = currentQuantity + 1;
+
+
+  
+          const body = { name: name, id: itemId, quant: newQuantity };
+          return this.http.put<any[]>(this.baseUrl + planetName, body);
         })
-    ).subscribe(() => {
-        // Handle success or any other logic after the put request
-    });
+      )
+      .subscribe(() => {
+        console.log('Item collected');
+      });
+  }
+  
 }
-}
+
+
+
+
+

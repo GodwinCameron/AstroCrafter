@@ -24,18 +24,24 @@ export class Resources {
   @Column()
   public collect_cost!: number;
 
-  @OneToMany(() => Sylva, sylva => sylva.resource)
+  @OneToMany(() => Sylva, (sylva) => sylva.resource)
   sylva!: Sylva[];
-  @OneToMany(() => Desolo, desolo => desolo.resource)
+  @OneToMany(() => Desolo, (desolo) => desolo.resource)
   desolo!: Desolo[];
-  @OneToMany(() => Calidor, calidor => calidor.resource)
+  @OneToMany(() => Calidor, (calidor) => calidor.resource)
   calidor!: Calidor[];
-  @OneToMany(() => Vesania, vesania => vesania.resource)
+  @OneToMany(() => Vesania, (vesania) => vesania.resource)
   vesania!: Vesania[];
-  @OneToMany(() => Novus, novus => novus.resource)
+  @OneToMany(() => Novus, (novus) => novus.resource)
   novus!: Novus[];
-  @OneToMany(() => Glacio, glacio => glacio.resource)
+  @OneToMany(() => Glacio, (glacio) => glacio.resource)
   glacio!: Glacio[];
-  @OneToMany(() => Atrox, atrox => atrox.resource)
+  @OneToMany(() => Atrox, (atrox) => atrox.resource)
   atrox!: Atrox[];
+
+  //   ingredient relations
+  @OneToMany(() => Resources, (resource) => resource.ingredient_1)
+  ingredient_1!: Resources[];
+  @OneToMany(() => Resources, (resource) => resource.ingredient_2)
+  ingredient_2!: Resources[];
 }

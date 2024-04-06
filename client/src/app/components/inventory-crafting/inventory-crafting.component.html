@@ -4,9 +4,19 @@
   </h1>
   <div class="content">
     <div class="section schematics">
-        <p>SCHEMATICS:</p>
-        <div class="block">
-          <p (click)="handleClick()">SMALL PRINTER.........................................................</p>
+      <p>SCHEMATICS:</p>
+      <div class="block">
+        <div class="recipe-name">
+          <p
+            *ngFor="let recipe of recipes; let i = index"
+            (click)="handleClick(i)"
+          >
+            <span>{{ recipe.name.toUpperCase() }}</span>
+            <span class="filler"></span>
+          </p>
+        </div>
+
+        <!-- <p (click)="handleClick()">SMALL PRINTER.........................................................</p>
           <p (click)="handleClick()">PACKAGER.........................................................</p>
           <p (click)="handleClick()">LEVELING BLOCK.........................................................</p>
           <p (click)="handleClick()">TETHERS.........................................................</p>
@@ -42,19 +52,23 @@
           <p (click)="handleClick()">SOLID-FUEL JUMP JET..........................................................</p>
           <p (click)="handleClick()">HYDRAZINE JET PACK..........................................................</p>
           <p (click)="handleClick()">HOVERBOARD..........................................................</p>
-          <p (click)="handleClick()">QT-RTG..........................................................</p>
-        </div>
+          <p (click)="handleClick()">QT-RTG..........................................................</p> -->
+      </div>
     </div>
     <div class="section ingredients">
-        <p>INGREDIENTS REQUIRED:</p>
-        <div class="block" #ingredientsElement></div>
+      <p>INGREDIENTS REQUIRED:</p>
+      <div class="block" #ingredientsElement>
+        <app-required-ingredient-card
+          [selctedRecipe]="selctedRecipe"
+        ></app-required-ingredient-card>
+      </div>
     </div>
     <div class="craft">
-        <div class="button" #craftButtonElement><p>CRAFT</p></div>
+      <div class="button" #craftButtonElement><p>CRAFT</p></div>
     </div>
     <div class="section yeild">
-        <p>YIELD:</p>
-        <div class="block" #yeildElement></div>
+      <p>YIELD:</p>
+      <div class="block" #yeildElement></div>
     </div>
   </div>
 </div>
