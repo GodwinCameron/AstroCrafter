@@ -10,11 +10,12 @@ import { RecipeService } from '../../services/recipe.service';
 import { CommonModule } from '@angular/common';
 import { RequiredIngredientCardComponent } from '../required-ingredient-card/required-ingredient-card.component';
 import { ResourceService } from '../../services/resource.service';
+import { CompletedCraftingComponent } from '../completed-crafting/completed-crafting.component';
 
 @Component({
   selector: 'app-inventory-crafting',
   standalone: true,
-  imports: [CommonModule, RequiredIngredientCardComponent],
+  imports: [CommonModule, RequiredIngredientCardComponent, CompletedCraftingComponent ],
   templateUrl: './inventory-crafting.component.html',
   styleUrl: './inventory-crafting.component.sass',
 })
@@ -33,6 +34,8 @@ export class InventoryCraftingComponent {
   @Input() wallet: number = 0;
   @Input() inventory: any;
   @Input() ingredientsMet: Array<boolean> = [false, false, false];
+  @Input() finishedCrafting: boolean = false;
+  @Input() crafted: any;
 
   constructor(
     private service: RecipeService,
@@ -77,6 +80,10 @@ export class InventoryCraftingComponent {
     console.log(this.isCraftable());
   }
 
+
+
+  
+
   // Sorry, This is a very ineffcient way to do this, I've done similar functionality somewhere else in this project without using this apporach
   // I just really wanted to try this with an unnecessary usage of ifstatements to see if it would work
   // I won't do this again, it isn't good to do it, but it was really fun to try
@@ -115,4 +122,19 @@ export class InventoryCraftingComponent {
       }
     }
   }
+
+
+  handleCraft() {
+    var recipe = this.selectedRecipe;
+    var ingredient1 = {item: this.selectedRecipe.ingredient_1, amount: this.selectedRecipe.ingredient_1_quantity};
+    var ingredient2 = {item: this.selectedRecipe.ingredient_2, amount: this.selectedRecipe.ingredient_2_quantity};
+
+    console.log('Crafting:', recipe, " using:", ingredient1, ingredient2);
+
+    this.resourceService.craftItem(this.currentPlanet.name, recipe, ingredient1, ingredient2);
+    this.finishedCrafting = true;
+    this.crafted = recipe;
+  }
+    
+
 }

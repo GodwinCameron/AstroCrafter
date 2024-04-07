@@ -28,7 +28,7 @@ export class RequiredIngredientCardComponent {
     let ingredient = this.inventory.find((item: any) => item.id === id);
     this.requiredItemAmount = ingredient.quantity;
     if (
-      ingredient.quantity >
+      ingredient.quantity >=
       this.selectedRecipe['ingredient_' + this.ingredientNumber + '_quantity']
     ) {
       this.ingredientsMet[number] = true;

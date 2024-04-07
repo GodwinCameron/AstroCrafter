@@ -58,7 +58,7 @@
         <app-inventory-crafting [currentPlanet]="currentPlanet"></app-inventory-crafting>
       </div>
       <div *ngIf="navItemsClicked[2]">
-        <app-refinery />
+        <app-refinery [currentPlanet]="currentPlanet"></app-refinery>
       </div>
       <div *ngIf="navItemsClicked[3]">
         <app-planet-selector

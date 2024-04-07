@@ -42,16 +42,24 @@
       </div>
     </div>
     <div class="craft">
-      <div class="button" #craftButtonElement>
-        <p>
-          <ng-container *ngIf="isCraftable()">CRAFT</ng-container>
-          <ng-container *ngIf="!isCraftable()">MISSING INGREDIENTS</ng-container>
-        </p>
-      </div>
+      <ng-container *ngIf="isCraftable()">
+        <div class="button" (click)="handleCraft()" #craftButtonElement>
+          <p>CRAFT</p>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="!isCraftable()">
+        <div class="button" #craftButtonElement>
+          <p>MISSING INGREDIENTS</p>
+        </div>
+      </ng-container>
     </div>
     <div class="section yeild">
       <p>YIELD:</p>
-      <div class="block" #yeildElement></div>
+      <div class="block" #yeildElement>
+        <ng-container *ngIf="finishedCrafting">
+          <app-completed-crafting [crafted]="crafted"></app-completed-crafting>
+        </ng-container>
+      </div>
     </div>
   </div>
 </div>
