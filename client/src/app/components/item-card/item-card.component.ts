@@ -16,6 +16,7 @@ export class ItemCardComponent {
   @Input() currentPlanet: any = '';
   @Output() dataChanged = new EventEmitter<any>();
   planets: any;
+  selectedPlanet: string = ''; 
 
   constructor(private resourceService: ResourceService, private planetService: PlanetService) {}
 

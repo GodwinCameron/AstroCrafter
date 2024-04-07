@@ -23,7 +23,6 @@ export class RefineryComponent {
     this.resourceService.getAllResources(this.currentPlanet.name).subscribe((data) => {
       this.inventory = data;
       console.log(this.inventory);
-      
     });
     this.refinablesService.getAllRefinables().subscribe((data) => {
       this.refinables = data;
