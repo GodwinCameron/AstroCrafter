@@ -1,1 +1,18 @@
-<p>refine-item works!</p>
+<div class="main">
+  <img
+    src="../../../assets/icons/{{ refinable.creates.name.toLowerCase() }}.png"
+  />
+  <p>
+    {{ refinable.name }} <span>{{ refinable.raw.name }}</span> into
+    <span>{{ refinable.creates.name }}</span>
+  </p>
+  <div class="checker">
+    <ng-container *ngIf="resource.quantity <= 0">
+        <p>ingredients not met</p>
+    </ng-container>
+    <ng-container *ngIf="resource.quantity > 0">
+        <button (click)="refine(refinable.raw.id, refinable.creates.id)">Refine</button>
+    </ng-container>
+  </div>
+</div>
+

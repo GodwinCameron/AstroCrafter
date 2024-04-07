@@ -3,6 +3,9 @@
       REFINERY.........................................................................................................................................
     </h1>
     <div class="container">
-        <app-refine-item></app-refine-item>
+        <!-- <app-refine-item></app-refine-item> -->
+        <ng-container *ngFor="let refinable of refinables; let i = index">
+            <app-refine-item [refinable]="refinable" [currentPlanet]="currentPlanet" [inventory]="inventory"></app-refine-item>
+        </ng-container>
     </div>
 </div>

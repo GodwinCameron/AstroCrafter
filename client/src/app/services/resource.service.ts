@@ -45,47 +45,116 @@ export class ResourceService {
       });
   }
 
-  craftItem(planetName: any, recipe: any, ingredient1: any, ingredient2: any) {
-    console.log('Crafting: ',recipe.name,' at planet: ', planetName, " using: ", ingredient1, " and ", ingredient2);
-    if(ingredient2.item === null){
+  refineResource(planetName: string, rawId: number, refinedId: number) {
     this.http.get<any>(this.baseUrl + planetName).pipe(
       concatMap((items) => {
-        const currentQuantity1 = items.find((item: any) => item.id === ingredient1.item.id).quantity;
-        const newQuantity1 = currentQuantity1 - ingredient1.amount;
-        const body1 = { name: ingredient1.item.name, id: ingredient1.item.id, quant: newQuantity1 };
-        return concat(
-          this.http.put<any[]>(this.baseUrl + planetName, body1)
-        );
-      })
-    ).subscribe(() => {
-      console.log('Ingredient 1 used');
-    });
-  } else {
-    console.log("crafting with 2 ingredients");
-    
-    this.http.get<any>(this.baseUrl + planetName).pipe(
-      concatMap((items) => {
-        const currentQuantity1 = items.find((item: any) => item.id === ingredient1.item.id).quantity;
-        const newQuantity1 = currentQuantity1 - ingredient1.amount;
-        const body1 = { name: ingredient1.item.name, id: ingredient1.item.id, quant: newQuantity1 };
-        return concat(
-          this.http.put<any[]>(this.baseUrl + planetName, body1)
-        );
+        const currentRaw = items.find((item: any) => item.id === rawId);
+        if (!currentRaw) {
+          throw new Error('Raw item not found');
+        }
+        const currentQuantityRaw = currentRaw.quantity;
+        const newQuantityRaw = currentQuantityRaw - 1;
+        const bodyRaw = { name: currentRaw.resource.name, id: rawId, quant: newQuantityRaw };
+        return this.http.put<any[]>(this.baseUrl + planetName, bodyRaw);
       }),
       concatMap(() => {
         return this.http.get<any>(this.baseUrl + planetName);
       }),
       concatMap((items) => {
-        const currentQuantity2 = items.find((item: any) => item.id === ingredient2.item.id).quantity;
-        const newQuantity2 = currentQuantity2 - ingredient2.amount;
-        const body2 = { name: ingredient2.item.name, id: ingredient2.item.id, quant: newQuantity2 };
-        return concat(
-          this.http.put<any[]>(this.baseUrl + planetName, body2)
-        );
+        const currentRefined = items.find((item: any) => item.id === refinedId);
+        if (!currentRefined) {
+          throw new Error('Refined item not found');
+        }
+        const currentRefinedQuantity = currentRefined.quantity;
+        const newQuantityRefined = currentRefinedQuantity + 1;
+        const bodyRefined = { name: currentRefined.resource.name, id: refinedId, quant: newQuantityRefined };
+        return this.http.put<any[]>(this.baseUrl + planetName, bodyRefined);
       })
-    ).subscribe(() => {
-      console.log('Ingredients used');
-    });
+    ).subscribe(
+      () => {
+        console.log('Resource refined successfully');
+      },
+      (error) => {
+        console.error('Error refining resource:', error);
+      }
+    );
   }
+  
+
+  craftItem(planetName: any, recipe: any, ingredient1: any, ingredient2: any) {
+    console.log(
+      'Crafting: ',
+      recipe.name,
+      ' at planet: ',
+      planetName,
+      ' using: ',
+      ingredient1,
+      ' and ',
+      ingredient2
+    );
+    if (ingredient2.item === null) {
+      this.http
+        .get<any>(this.baseUrl + planetName)
+        .pipe(
+          concatMap((items) => {
+            const currentQuantity1 = items.find(
+              (item: any) => item.id === ingredient1.item.id
+            ).quantity;
+            const newQuantity1 = currentQuantity1 - ingredient1.amount;
+            const body1 = {
+              name: ingredient1.item.name,
+              id: ingredient1.item.id,
+              quant: newQuantity1,
+            };
+            return concat(
+              this.http.put<any[]>(this.baseUrl + planetName, body1)
+            );
+          })
+        )
+        .subscribe(() => {
+          console.log('Ingredient 1 used');
+        });
+    } else {
+      console.log('crafting with 2 ingredients');
+
+      this.http
+        .get<any>(this.baseUrl + planetName)
+        .pipe(
+          concatMap((items) => {
+            const currentQuantity1 = items.find(
+              (item: any) => item.id === ingredient1.item.id
+            ).quantity;
+            const newQuantity1 = currentQuantity1 - ingredient1.amount;
+            const body1 = {
+              name: ingredient1.item.name,
+              id: ingredient1.item.id,
+              quant: newQuantity1,
+            };
+            return concat(
+              this.http.put<any[]>(this.baseUrl + planetName, body1)
+            );
+          }),
+          concatMap(() => {
+            return this.http.get<any>(this.baseUrl + planetName);
+          }),
+          concatMap((items) => {
+            const currentQuantity2 = items.find(
+              (item: any) => item.id === ingredient2.item.id
+            ).quantity;
+            const newQuantity2 = currentQuantity2 - ingredient2.amount;
+            const body2 = {
+              name: ingredient2.item.name,
+              id: ingredient2.item.id,
+              quant: newQuantity2,
+            };
+            return concat(
+              this.http.put<any[]>(this.baseUrl + planetName, body2)
+            );
+          })
+        )
+        .subscribe(() => {
+          console.log('Ingredients used');
+        });
+    }
   }
 }

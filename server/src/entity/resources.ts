@@ -44,4 +44,10 @@ export class Resources {
   ingredient_1!: Resources[];
   @OneToMany(() => Resources, (resource) => resource.ingredient_2)
   ingredient_2!: Resources[];
+
+  // refinables
+  @OneToMany(() => Resources, (resource) => resource.raw)
+  raw!: Resources[];
+  @OneToMany(() => Resources, (resource) => resource.refinable)
+  refinable!: Resources[];
 }

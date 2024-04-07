@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RefineItemComponent } from '../refine-item/refine-item.component';
 import { ResourceService } from '../../services/resource.service';
+import { RefinablesService } from '../../services/refinables.service';
 
 @Component({
   selector: 'app-refinery',
@@ -13,12 +14,19 @@ import { ResourceService } from '../../services/resource.service';
 export class RefineryComponent {
 
   @Input() currentPlanet: any;
+  @Input() inventory: any;
+  @Input() refinables: any;
 
-  constructor(private service: ResourceService) { }
+  constructor(private resourceService: ResourceService, private refinablesService: RefinablesService) { }
 
   ngOnInit() {
-    this.service.getAllResources(this.currentPlanet.name).subscribe((data) => {
-      console.log(data);
+    this.resourceService.getAllResources(this.currentPlanet.name).subscribe((data) => {
+      this.inventory = data;
+      console.log(this.inventory);
+      
+    });
+    this.refinablesService.getAllRefinables().subscribe((data) => {
+      this.refinables = data;
     });
   }
 

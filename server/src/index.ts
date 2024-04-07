@@ -5,6 +5,7 @@ import resourceRouter from "./routes/resourcesRoute";
 import planetRouter from "./routes/planetsRoute";
 import inventoryRouter from "./routes/inventoryRoute";
 import recipeRouter from "./routes/recipesRoute";
+import refineRouter from "./routes/refinableRoute";
 
 const cors = require('cors');
 const app = express();
@@ -24,6 +25,7 @@ app.use('/resources', resourceRouter);
 app.use('/planets', planetRouter);
 app.use('/inventory', inventoryRouter);
 app.use('/recipes', recipeRouter);
+app.use('/refinables', refineRouter);
 
 
 app.listen(process.env.PORT, () => {

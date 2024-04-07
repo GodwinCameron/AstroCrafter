@@ -1,0 +1,45 @@
+.main
+    border: 3px solid #5F5F5F
+    border-radius: 7px
+    border-top-width: 12px
+    padding: 5px
+    width: fit-content
+    display: flex
+    flex-direction: row
+    min-width: 20vw
+    img
+        width: 20px
+        margin-right: 0.5vw
+    span
+        color: greenyellow
+    &:hover
+        border-color: #00ADEB
+        span
+            color: #00ADEB
+        img
+            filter: invert(100%)
+            transition: all 0.5s
+
+    .checker
+        display: flex
+        width: 3vw
+        text-align: center
+        font-size: 10px
+        color: red
+        margin-left: auto
+
+        p
+            color: red
+        button
+            background-color: #00ADEB
+            outline: none
+            border: 1px solid white
+            border-radius: 3px
+            padding: 3px
+            cursor: pointer
+            &:hover
+                background-color: #5F5F5F
+                color: #00ADEB
+                border: 1px solid #00ADEB
+
+
